@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
 import { usePaystackPayment } from "react-paystack";
