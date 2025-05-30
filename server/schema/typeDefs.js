@@ -31,6 +31,7 @@ const typeDefs = gql`
     register(email: String!, password: String!, name: String!): AuthPayload!
     login(email: String!, password: String!): AuthPayload!
     fundWallet(amount: Float!): User!
+    verifyPayment(reference: String!): User!
   }
 `;
 

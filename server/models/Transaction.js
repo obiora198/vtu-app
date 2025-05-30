@@ -1,9 +1,12 @@
+// models/Transaction.js
 import mongoose from 'mongoose';
 
 const transactionSchema = new mongoose.Schema({
-  amount: { type: Number, required: true },
-  type: { type: String, enum: ['funding', 'debit'], required: true },
+  amount: Number,
+  type: String, // e.g. 'funding'
+  createdAt: { type: Date, default: Date.now },
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-}, { timestamps: true });
+  reference: { type: String, unique: true }, // <-- Add this
+});
 
-export default mongoose.model('Transaction', transactionSchema);
+export default mongoose.models.Transaction || mongoose.model('Transaction', transactionSchema);

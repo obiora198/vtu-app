@@ -10,11 +10,14 @@ import resolvers from "./resolvers/index.js";
 import { verifyToken } from "./utils/auth.js";
 import cors from "cors";
 import bodyParser from "body-parser";
+import webhookRouter from './webhooks/paystack.js';
 
 dotenv.config();
 
 const startServer = async () => {
   const app = express();
+
+  app.use('/webhook/paystack', webhookRouter);
   app.use(cors());
   app.use(bodyParser.json());
 
